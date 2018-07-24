@@ -1,10 +1,40 @@
 # Program that performs bitwise operators.
 
-# TODO OR operation
+def orFunc( num, numTwo ):
 
-# TODO AND operation
+    orNum = list(map(int, str(num)))
+    orNumTwo = list(map(int, str(numTwo)))
+    orComplete = [0] * len(orNum)
 
-# TODO SHIFT LEFT operation
+    for i in range(len(orNum)):
+        if (orNum[i] == 1) or (orNumTwo[i] == 1):
+            orComplete[i] = 1
+        elif (orNum[i] == 0) and (orNumTwo[i] == 0):
+            orComplete[i] = 0            
+    return ''.join(map(str, orComplete))
+
+
+def andFunc( num, numTwo ):
+
+    andNum = list(map(int, str(num)))
+    andNumTwo = list(map(int, str(numTwo)))
+    andComplete = [0] * len(andNum)
+
+    for i in range(len(andNum)):
+        if andNum[i] == 1 and andNumTwo[i] == 1:
+            andComplete[i] = 1
+        else:
+            andComplete[i] = 0
+    return ''.join(map(str, andComplete))
+
+
+def shiftLeft( num, shift ):
+
+    numList = list(map(int, str(num)))
+    shiftNum = [0] * shift
+    numList.extend(shiftNum)
+    return int(''.join(map(str, numList)))
+    
 
 # TODO SHIFT RIGHT operation
 
@@ -29,13 +59,38 @@ def xorFunc( num, numTwo ):
 def main():
 
     # TODO make program more interactive.
+    print("-----------Bitwise Operators-----------")
+    print("[X]OR")
+    print("[O]R")
+    print("[A]ND")
+    print("Shift [L]eft")
+    print("Shift [R]ight")
+    print("EXIT - To Quit")
+    choice = input("\nPlease enter your decision: ")
 
-    binNum = int(input("Please enter the first binary number you would like to operator on: "))
-    binNumTwo = int(input("Please enter the second binary number you would like to operator on: "))
 
-    print(xorFunc( binNum, binNumTwo ))
+    if choice == "X":
+        binNum = int(input("\nPlease enter the first binary number you would like to XOR: "))
+        binNumTwo = int(input("Please enter the second binary number you would like to XOR: "))
+        print(xorFunc( binNum, binNumTwo ))
+    elif choice == "O":
+        binNum = int(input("\nPlease enter the first binary number you would like to OR: "))
+        binNumTwo = int(input("Please enter the second binary number you would like to OR: "))
+        print(orFunc(binNum, binNumTwo))
+    elif choice == "A":
+        binNum = int(input("\nPlease enter the first binary number you would like to AND: "))
+        binNumTwo = int(input("Please enter the second binary number you would like to AND: "))
+        print(andFunc(binNum, binNumTwo))
+    elif choice == "L":
+        binNum = int(input("\nPlease enter the binary number you would like to shift left: "))
+        shifty = int(input("Please enter the amount you would like to shift: "))
+        print(shiftLeft(binNum, shifty))
+    elif choice == "R":
+        print("TODO SHIFT RIGHT")
+    elif choice == "EXIT":
+        return print("Cya later, aligator.")
        
-    return
+    return print("Cya later, aligator")
 
 
 main()
