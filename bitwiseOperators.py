@@ -1,4 +1,4 @@
-# Program that performs bitwise operators.
+# Program that performs bitwise operations.
 
 def orFunc( num, numTwo ):
 
@@ -36,7 +36,11 @@ def shiftLeft( num, shift ):
     return int(''.join(map(str, numList)))
     
 
-# TODO SHIFT RIGHT operation
+def shiftRight( num, shift ):
+
+    numList = list(map(int, str(num)))
+    shiftList = numList[:len(numList) - shift]
+    return ''.join(map(str, shiftList))
 
 def xorFunc( num, numTwo ):
 
@@ -59,6 +63,7 @@ def xorFunc( num, numTwo ):
 def main():
 
     # TODO make program more interactive.
+    # TODO add hexidecimal and true/false support
     print("-----------Bitwise Operators-----------")
     print("[X]OR")
     print("[O]R")
@@ -86,7 +91,9 @@ def main():
         shifty = int(input("Please enter the amount you would like to shift: "))
         print(shiftLeft(binNum, shifty))
     elif choice == "R":
-        print("TODO SHIFT RIGHT")
+        binNum = int(input("\nPlease enter the binary number you would like to shift right: "))
+        shifty = int(input("Please enter the amount you would like to shift: "))
+        print(shiftRight(binNum, shifty))
     elif choice == "EXIT":
         return print("Cya later, aligator.")
        
